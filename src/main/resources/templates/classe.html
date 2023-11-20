@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<h1 align="center"> c'est l'interface classe </h1>
+
+<a th:href="@{ajoutClasse}" class="btn btn-outline-info">Ajouter une classe </a>
+
+<table border="2" align="center" class="table">
+<tr class="p-3 mb-2 bg-primary text-white">
+<td>identifiant</td>
+<td>département</td>
+<td>faculte</td>
+<td>type de formation </td>
+<td>niveau</td>
+<td>modifier</td>
+<td>supprimer</td>
+</tr>
+
+<!-- each permet de parcourir un tableau et "c" dans each est une variable temporaire qui va représenter chaque élément de la collection. --> 
+
+<tr th:each="c : ${Classess2}">
+<td th:text="${c.id}"></td>
+<td th:text="${c.departement}"></td>
+<td th:text="${c.faculte}"></td>
+<td th:text="${c.type_de_formation}"></td>
+<td th:text="${c.niveau}"></td>
+<td><a class="btn btn-warning" th:href="@{/classe/modifier/{id}(id=${c.id})}">modifier</a></td>
+<td><a class="btn btn-danger" th:href="@{/classe/delete/{id}(id=${c.id})}">supprimer</a></td>
+</tr>
+</table>
